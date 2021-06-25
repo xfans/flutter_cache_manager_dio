@@ -1,0 +1,33 @@
+# Flutter_cache_manager_dio
+
+Language: [English](README.md) | [中文简体](README-zh.md)
+
+flutter_cache_manager with [dio](https://pub.dev/packages/dio)
+
+## Getting Started
+
+A Dio implementation for [flutter_cache_manager](https://pub.dev/packages/flutter_cache_manager)
+Like [flutter_cache_manager_firebase](https://pub.dev/packages/flutter_cache_manager_firebase)
+
+```dart
+var dio = Dio();
+dio.interceptors.add(LogInterceptor(responseBody: false));
+var file = await DioCacheManager(dio).getSingleFile(url);
+```
+Can use Dio Interceptors etc.
+
+[cached_network_image](https://pub.dev/packages/cached_network_image) can use
+
+Like glide with okhttp
+```dart
+CachedNetworkImage(
+    cacheManager: DioCacheManager(dio),
+    imageUrl: url,
+    placeholder: (context, url) => CircularProgressIndicator(),
+    errorWidget: (context, url, error) => Container(
+    child: Text(
+        'error',
+        ),
+    ),
+);
+'''
