@@ -1,7 +1,6 @@
 name: flutter_cache_manager_dio
 description: flutter_cache_manager with dio
 version: 2.0.0
-author: xfans
 homepage: https://github.com/xfans/flutter_cache_manager_dio
 
 environment:
