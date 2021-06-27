@@ -1,5 +1,7 @@
 # Futter_cache_manager_dio
 
+![flutter_cache_manager_dio](https://img.shields.io/pub/v/flutter_cache_manager_dio)
+
 Language: [English](README.md) | [中文简体](README-zh.md)
 
 使用 [dio](https://pub.dev/packages/dio) 的flutter_cache_manager
