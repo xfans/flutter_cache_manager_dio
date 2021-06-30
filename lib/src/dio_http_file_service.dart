@@ -78,7 +78,6 @@ class DioGetResponse implements FileServiceResponse {
   }
 
   int _getContentLength() {
-    print('_getContentLength ${_response.headers}');
     try {
       return int.parse(
           _response.headers[Headers.contentLengthHeader]?.first ?? '-1');
