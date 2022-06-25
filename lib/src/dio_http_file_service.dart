@@ -12,7 +12,7 @@ class DioHttpFileService extends FileService {
 
   @override
   Future<FileServiceResponse> get(String url,
-      {Map<String, String> headers}) async {
+      {Map<String, String>? headers}) async {
     Options options =
         Options(headers: headers ?? {}, responseType: ResponseType.stream);
 
@@ -30,7 +30,7 @@ class DioGetResponse implements FileServiceResponse {
   DioGetResponse(this._response);
 
   @override
-  Stream<List<int>> get content => _response.data.stream;
+  Stream<List<int>> get content => _response.data!.stream;
 
   @override
   int get contentLength => _getContentLength();
@@ -45,13 +45,13 @@ class DioGetResponse implements FileServiceResponse {
         _response.headers[Headers.contentTypeHeader]?.first;
     if (contentTypeHeader != null) {
       final contentType = ContentType.parse(contentTypeHeader);
-      fileExtension = mimeTypes[contentType.mimeType];
+      fileExtension = mimeTypes[contentType.mimeType]!;
     }
     return fileExtension;
   }
 
   @override
-  int get statusCode => _response.statusCode;
+  int get statusCode => _response.statusCode!;
 
   @override
   DateTime get validTill {
