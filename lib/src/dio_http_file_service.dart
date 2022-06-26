@@ -6,7 +6,7 @@ import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'mime_extension.dart';
 
 class DioHttpFileService extends FileService {
-  Dio _dio;
+  final Dio _dio;
 
   DioHttpFileService(this._dio);
 
@@ -25,7 +25,7 @@ class DioHttpFileService extends FileService {
 
 class DioGetResponse implements FileServiceResponse {
   final DateTime _receivedTime = DateTime.now();
-  Response<ResponseBody> _response;
+  final Response<ResponseBody> _response;
 
   DioGetResponse(this._response);
 
