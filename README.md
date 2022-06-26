@@ -14,7 +14,8 @@ Like [flutter_cache_manager_firebase](https://pub.dev/packages/flutter_cache_man
 ```dart
 var dio = Dio();
 dio.interceptors.add(LogInterceptor(responseBody: false));
-var file = await DioCacheManager(dio).getSingleFile(url);
+DioCacheManager.initialize(dio);
+var file = await DioCacheManager.instance.getSingleFile(url);
 ```
 Can use Dio Interceptors etc.
 
@@ -23,7 +24,7 @@ Can use Dio Interceptors etc.
 Like glide with okhttp
 ```dart
 CachedNetworkImage(
-    cacheManager: DioCacheManager(dio),
+    cacheManager: DioCacheManager.instance,
     imageUrl: url,
     placeholder: (context, url) => CircularProgressIndicator(),
     errorWidget: (context, url, error) => Container(
