@@ -6,13 +6,13 @@ import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'mime_extension.dart';
 
 class DioHttpFileService extends FileService {
-  Dio _dio;
+  final Dio _dio;
 
   DioHttpFileService(this._dio);
 
   @override
   Future<FileServiceResponse> get(String url,
-      {Map<String, String> headers}) async {
+      {Map<String, String>? headers}) async {
     Options options =
         Options(headers: headers ?? {}, responseType: ResponseType.stream);
 
@@ -25,12 +25,12 @@ class DioHttpFileService extends FileService {
 
 class DioGetResponse implements FileServiceResponse {
   final DateTime _receivedTime = DateTime.now();
-  Response<ResponseBody> _response;
+  final Response<ResponseBody> _response;
 
   DioGetResponse(this._response);
 
   @override
-  Stream<List<int>> get content => _response.data.stream;
+  Stream<List<int>> get content => _response.data!.stream;
 
   @override
   int get contentLength => _getContentLength();
@@ -45,13 +45,13 @@ class DioGetResponse implements FileServiceResponse {
         _response.headers[Headers.contentTypeHeader]?.first;
     if (contentTypeHeader != null) {
       final contentType = ContentType.parse(contentTypeHeader);
-      fileExtension = mimeTypes[contentType.mimeType];
+      fileExtension = mimeTypes[contentType.mimeType]!;
     }
     return fileExtension;
   }
 
   @override
-  int get statusCode => _response.statusCode;
+  int get statusCode => _response.statusCode!;
 
   @override
   DateTime get validTill {
