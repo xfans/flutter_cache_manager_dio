@@ -14,7 +14,8 @@ Language: [English](README.md) | [中文简体](README-zh.md)
 ```dart
 var dio = Dio();
 dio.interceptors.add(LogInterceptor(responseBody: false));
-var file = await DioCacheManager(dio).getSingleFile(url);
+DioCacheManager.initialize(dio);
+var file = await DioCacheManager.instance.getSingleFile(url);
 ```
 可以使用dio的拦截器等.
 
@@ -23,7 +24,7 @@ var file = await DioCacheManager(dio).getSingleFile(url);
 就像glide使用okhttp
 ```dart
 CachedNetworkImage(
-    cacheManager: DioCacheManager(dio),
+    cacheManager: DioCacheManager.instance,
     imageUrl: url,
     placeholder: (context, url) => CircularProgressIndicator(),
     errorWidget: (context, url, error) => Container(
